@@ -84,6 +84,37 @@
             {
                 Console.WriteLine("e3 is in the stack.");
             }
+
+            List<Employee> list = new List<Employee>();
+            list.Add(e1);
+            list.Add(e2);
+            list.Add(e3);
+            list.Add(e4);
+            list.Add(e5);
+
+            if (list.Contains(e2))
+            {
+                Console.WriteLine("Employee2 object exists in the list.");
+            }
+            else
+            {
+                Console.WriteLine("Employee2 object does not exist in the list");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Using Find method on list");
+            Console.WriteLine();
+
+            Employee check = list.Find(x => x.Gender == "male");
+            Console.Write("Id: {0}, ", check.Id);
+            Console.Write("Name: {0}, ", check.Name);
+            Console.Write("Gender: {0}, ", check.Gender);
+            Console.WriteLine("Salary: {0}.", check.Salary);
+
+            Console.WriteLine();
+
+            //Employee check2 = list.FindAll(x => x.Gender == "male");
+
         }
     }
 }
