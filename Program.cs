@@ -22,10 +22,7 @@
             // Prints the properties of each employee in the stack. Returns how many are left in the stack, but never removes any objects.
             foreach (Employee e in stack)
             {
-                Console.Write("Id: {0}, ", e.Id);
-                Console.Write("Name: {0}, ", e.Name);
-                Console.Write("Gender: {0}, ", e.Gender);
-                Console.WriteLine("Salary: {0}.", e.Salary);
+                e.Print();
                 Console.WriteLine($"{stack.Count()} remaining in stack");
                 Console.WriteLine();
             }
@@ -39,11 +36,8 @@
             // Uses the pop method to print all the employees in the stack. Removes them while printing, so stack.Count in decremented every time.
             while(stack.Count > 0)
             {
-                Employee emp = stack.Pop();
-                Console.Write("Id: {0} ,", emp.Id);
-                Console.Write("Name: {0}, ", emp.Name);
-                Console.Write("Gender: {0}, ", emp.Gender);
-                Console.WriteLine("Salary: {0}.", emp.Salary);
+                Employee e = stack.Pop();
+                e.Print();
                 Console.WriteLine($"{stack.Count()} remaining in stack");
                 Console.WriteLine();
             }
@@ -64,11 +58,8 @@
             // Uses the peek method to print the top employee in the stack. Does not remove any object.
             for (int i = 0; i < 2; i++)
             {
-                Employee emp = stack.Peek();
-                Console.Write("Id: {0}, ", emp.Id);
-                Console.Write("Name: {0}, ", emp.Name);
-                Console.Write("Gender: {0}, ", emp.Gender);
-                Console.WriteLine("Salary: {0}.", emp.Salary);
+                Employee e = stack.Peek();
+                e.Print();
                 Console.WriteLine($"{stack.Count()} remaining in stack");
                 Console.WriteLine();
             }
@@ -85,6 +76,7 @@
                 Console.WriteLine("e3 is in the stack.");
             }
 
+            // Creates a list and adds the employees to it.
             List<Employee> list = new List<Employee>();
             list.Add(e1);
             list.Add(e2);
@@ -92,6 +84,7 @@
             list.Add(e4);
             list.Add(e5);
 
+            // Uses contains method to check if the list contatins a specific employee.
             if (list.Contains(e2))
             {
                 Console.WriteLine("Employee2 object exists in the list.");
@@ -101,20 +94,45 @@
                 Console.WriteLine("Employee2 object does not exist in the list");
             }
 
+            Console.WriteLine("------------------");
+
             Console.WriteLine();
             Console.WriteLine("Using Find method on list");
             Console.WriteLine();
 
+            // Uses the Find()-method to find the first object in the list with the gender set to "male". Then prints the information.
             Employee check = list.Find(x => x.Gender == "male");
-            Console.Write("Id: {0}, ", check.Id);
-            Console.Write("Name: {0}, ", check.Name);
-            Console.Write("Gender: {0}, ", check.Gender);
-            Console.WriteLine("Salary: {0}.", check.Salary);
+            check.Print();
 
             Console.WriteLine();
 
-            //Employee check2 = list.FindAll(x => x.Gender == "male");
+            Console.WriteLine("------------------");
+            Console.WriteLine();
+            Console.WriteLine("Using FindAll method on list");
+            Console.WriteLine();
 
+            // Uses the FindAll()-method to find all objects in "list" with the gender set to male, then stores them in a new list called results.
+            // Then prints all the objects with "male".
+            List<Employee> results = list.FindAll(FindGender);
+            foreach (Employee e in results)
+            {
+                e.Print();
+            }
+
+        }
+
+        // Method used in the FindAll() method. This does the check to see if the employee object has the gender property set to "male".
+        // Adapted from microsofts documentation on FindAll(). In the documentation they use books instead.
+        private static bool FindGender(Employee emp)
+        {
+            if(emp.Gender == "male")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

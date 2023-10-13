@@ -19,5 +19,14 @@ namespace Lab_8_OOP_Generic_Collections
             Gender = gender;
             Salary = salary;
         }
+
+        // Print method for Employee objects, instead of repeating the Console.WriteLines() as I previously did.
+        public void Print()
+        {
+            Console.Write("Id: {0}, ", Id);
+            Console.Write("Name: {0}, ", Name);
+            Console.Write("Gender: {0}, ", Gender);
+            Console.WriteLine("Salary: {0}.", Salary);
+        }
     }
 }
