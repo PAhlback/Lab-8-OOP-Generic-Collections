@@ -1,6 +1,6 @@
 # Lab 8 OOP Generic Collections
 Assingment to learn how stacks and lists work. Goes through these methods:
-Stack:
+## Stack:
 Push, Pop, Peek, Contains.
-List: 
+## List: 
 Add, Contains, Find, FindAll.
